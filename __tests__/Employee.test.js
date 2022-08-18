@@ -13,7 +13,8 @@ test('creates an employee object', () => {
 
 });
 
-// test('gets employee name' , () => {
-//     const employee = new Employee;
-//     expect(employee.getName()).toBe('Rikayla');
-// });
+
+test('gets employee name' , () => {
+    const employee = new Employee;
+    expect(employee.getName()).toEqual(expect.any(String));
+});
