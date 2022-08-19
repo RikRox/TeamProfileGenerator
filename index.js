@@ -4,13 +4,16 @@ const Employee = require('./lib/Employee');
 const Intern = require('./lib/Intern');
 const Engineer = require('./lib/Engineer');
 
-enterInfo();
+const generateHtml = require('./src/generateHTML');
+
+//enterInfo();
+
+const teamArray = [];
 
 
-
-function enterInfo(){
+const addManager = () => {
     
-    inquirer
+    return inquirer
     .prompt([
     {
         type: 'input',
@@ -31,20 +34,30 @@ function enterInfo(){
         type: 'input',
         name: 'officeNumber',
         message: "Enter the team manager's office number:"
-        },
+    },
     {
         type: 'confirm',
         name: 'addEngineer',
         message: "Do you want to add an Engineer to the team?"
     }
 
-]) 
-    .then(({name, id, email, officeNumber}) => {
-        this.manager = new Manager(name, id, email, officeNumber);
+    .then(managerInfo => {
+        const {name, id, email, officeNumber} = managerInfo;
+        const manager = new Manager(name,id,email,officeNumber);
+        console.log(manager);
 
-    });
-}
+        teamArray.push(manager);
+    })
+
+]) ;
 
 
+//     .then(({name, id, email, officeNumber}) => {
+//         this.manager = new Manager(name, id, email, officeNumber);
+
+//     });
+// }
+    
+};
 
 
